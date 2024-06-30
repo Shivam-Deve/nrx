@@ -3,12 +3,19 @@ import {
   getComponentByType,
   getCorrespondingComponentFileTypes
 } from '../utils/generateComponentUtils.js'
-async function component (generate,cliConfigFile, args) {
-  const selectedComponentType = getComponentByType(args, cliConfigFile);
-  const componentCommand=generate
+
+export default function initGenerateComponentCommand (
+  args,
+  cliConfigFile,
+  program
+) {
+  const selectedComponentType = getComponentByType(args, cliConfigFile)
+
+  const componentCommand = program
     .command('component [names...]')
     .alias('c')
-    .description('Generate a new React component')
+    // Static component command option defaults.
+
     .option(
       '-p, --path <path>',
       'The path where the component will get generated in.',
@@ -44,6 +51,8 @@ async function component (generate,cliConfigFile, args) {
         '- TemplateNameSuffix'
     )
 
+  // Dynamic component command option defaults.
+
   const dynamicOptions = getCorrespondingComponentFileTypes(
     selectedComponentType
   )
@@ -64,5 +73,3 @@ async function component (generate,cliConfigFile, args) {
     )
   )
 }
-
-export default component
