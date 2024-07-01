@@ -270,7 +270,8 @@ export async function getCLIConfigFile (appName) {
 
     return currentConfigFile
   } catch (e) {
-    return await createCLIConfigFile(appName)
+    return null;
+    // return await createCLIConfigFile(appName)
   }
 }
 
@@ -305,3 +306,4 @@ const customizeProjectStructure = structure => {
 
   // Add more customization as needed
 }
+

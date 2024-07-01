@@ -20,7 +20,6 @@ program
   .description('Create a new React application with a custom structure')
   .action(appName => {
     init(appName);
-    process.exit(0);
   });
 
 program

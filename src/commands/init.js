@@ -1,6 +1,7 @@
 import shell from 'shelljs';
 import chalk from 'chalk';
 import inquirer from 'inquirer';
+import { createCLIConfigFile } from "../utils/grcConfigUtils.js"
 
 const projectStructures = [
   {
@@ -38,6 +39,9 @@ const createReactApp = async (appName) => {
   
   // Navigate into the app directory
   shell.cd(appName);
+
+  // create nrxConf.json
+  await createCLIConfigFile();
 
   // Customize the project structure based on user selection
   customizeProjectStructure(structure);

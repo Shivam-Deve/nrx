@@ -25,14 +25,9 @@ const { existsSync, outputFileSync, readFileSync } = fsExtra
 export function getComponentByType (args, cliConfigFile) {
   const hasComponentTypeOption = args.find(arg => arg.includes('--type'))
 
-  // Check for component type option.
-
   if (hasComponentTypeOption) {
-    const componentType = hasComponentTypeOption.split('=')[1] // get the component type value
+    const componentType = hasComponentTypeOption.split('=')[1]
     const selectedComponentType = cliConfigFile.component[componentType]
-
-    // If the selected component type does not exists in the cliConfigFile under `component` throw an error
-
     if (!selectedComponentType) {
       console.error(
         chalk.red(

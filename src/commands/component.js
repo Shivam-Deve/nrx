@@ -3,7 +3,8 @@ import {
   getComponentByType,
   getCorrespondingComponentFileTypes
 } from '../utils/generateComponentUtils.js'
-async function component (generate,cliConfigFile, args) {
+async function component(generate, cliConfigFile, args) {
+  if (!cliConfigFile) return;
   const selectedComponentType = getComponentByType(args, cliConfigFile);
   const componentCommand=generate
     .command('component [names...]')

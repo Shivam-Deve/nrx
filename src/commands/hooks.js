@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import chalk from 'chalk';
 function hooks(generate) {
     generate
       .command('hook <name>')
@@ -12,10 +13,10 @@ function hooks(generate) {
   
 function generateHook(name) {
     name = name.toLowerCase(); // dir name in lowercase
-    // const hookDirectory = path.join(process.cwd(), 'hooks');
-    // if (!fs.existsSync(hookDirectory)) {
-    //   fs.mkdirSync(hookDirectory);
-    // }
+    const hookDirectory = path.join(process.cwd(), 'src/hooks');
+    if (!fs.existsSync(hookDirectory)) {
+      fs.mkdirSync(hookDirectory);
+    }
   
     const hookTemplate = `import { useEffect, useState } from 'react';
   
